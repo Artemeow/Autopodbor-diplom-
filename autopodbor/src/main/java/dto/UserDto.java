@@ -26,6 +26,6 @@ public class UserDto {
 	private String lastname;
 	private String nickname;
 	private String password;
-	private List<ServiceDto> services;
+//	private List<ServiceDto> services;
 	
 }
