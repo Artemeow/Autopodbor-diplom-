@@ -6,27 +6,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import model.User;
-import repository.UserRepo;
+import model.Tariff;
+import repository.TariffRepo;
 
 @Service
-public class UserService {
+public class TariffService {
 
 	@Autowired
-	UserRepo repository;
+	TariffRepo repository;
 	
 	@Transactional
-	public boolean create(User user) {
-		return repository.save(user).equals(user)? true : false;
+	public boolean create(Tariff tariff) {
+		return repository.save(tariff).equals(tariff)? true : false;
 	}
 	
 	@Transactional
-	public Iterable<User> getAll() {
+	public Iterable<Tariff> getAll() {
 		return repository.findAll();
 	}
 	
 	@Transactional
-	public Optional<User> getUser(Long id) {
+	public Optional<Tariff> getTariff(Long id) {
 		return repository.findById(id);
 	}
 

@@ -6,27 +6,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import model.User;
-import repository.UserRepo;
+import model.Profile;
+import repository.ProfileRepo;
 
 @Service
-public class UserService {
+public class ProfileService {
 
 	@Autowired
-	UserRepo repository;
+	ProfileRepo repository;
 	
 	@Transactional
-	public boolean create(User user) {
-		return repository.save(user).equals(user)? true : false;
+	public boolean create(Profile profile) {
+		return repository.save(profile).equals(profile)? true : false;
 	}
 	
 	@Transactional
-	public Iterable<User> getAll() {
+	public Iterable<Profile> getAll() {
 		return repository.findAll();
 	}
 	
 	@Transactional
-	public Optional<User> getUser(Long id) {
+	public Optional<Profile> getProfile(Long id) {
 		return repository.findById(id);
 	}
 

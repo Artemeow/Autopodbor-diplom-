@@ -3,9 +3,9 @@ package repository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import model.Service;
+import model.City;
 
 @Repository
-public interface ServiceRepository extends CrudRepository<Service, Long> {
+public interface CityRepo extends CrudRepository<City, Long> {
 
 }

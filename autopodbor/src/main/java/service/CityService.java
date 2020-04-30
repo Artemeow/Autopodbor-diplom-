@@ -6,26 +6,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import repository.ServiceRepository;
+import model.City;
+import repository.CityRepo;
 
 @Service
-public class ServiceEntityService {
+public class CityService {
 
 	@Autowired
-	ServiceRepository repository;
+	CityRepo repository;
 	
 	@Transactional
-	public boolean create(model.Service service) {
-		return repository.save(service).equals(service)? true : false;
+	public boolean create(City city) {
+		return repository.save(city).equals(city)? true : false;
 	}
 	
 	@Transactional
-	public Iterable<model.Service> getAll() {
+	public Iterable<City> getAll() {
 		return repository.findAll();
 	}
 	
 	@Transactional
-	public Optional<model.Service> getService(Long id) {
+	public Optional<City> getCity(Long id) {
 		return repository.findById(id);
 	}
+
 }

@@ -3,9 +3,9 @@ package repository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import model.User;
+import model.Subscribe;
 
 @Repository
-public interface UserRepository extends CrudRepository<User, Long>{
-	
+public interface SubscribeRepo extends CrudRepository<Subscribe, Long> {
+
 }

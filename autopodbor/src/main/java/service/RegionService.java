@@ -6,27 +6,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import model.User;
-import repository.UserRepo;
+import model.Region;
+import repository.RegionRepo;
 
 @Service
-public class UserService {
-
+public class RegionService {
+	
 	@Autowired
-	UserRepo repository;
+	RegionRepo repository;
 	
 	@Transactional
-	public boolean create(User user) {
-		return repository.save(user).equals(user)? true : false;
+	public boolean create(Region region) {
+		return repository.save(region).equals(region)? true : false;
 	}
 	
 	@Transactional
-	public Iterable<User> getAll() {
+	public Iterable<Region> getAll() {
 		return repository.findAll();
 	}
 	
 	@Transactional
-	public Optional<User> getUser(Long id) {
+	public Optional<Region> getRegion(Long id) {
 		return repository.findById(id);
 	}
 
