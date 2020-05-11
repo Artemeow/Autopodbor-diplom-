@@ -1,108 +1,150 @@
 import React, { Component } from "react";
-
-import { FaComment } from "react-icons/fa";
-import { AiOutlineLike } from "react-icons/ai";
-import { AiOutlineDislike } from "react-icons/ai";
 import avatar from "./images/no_avatar.jpg";
+import { ProgressBar, Tab, Row, Col, Nav } from "react-bootstrap";
+
+// import { AiOutlineLike } from "react-icons/ai";
+// import { AiOutlineDislike } from "react-icons/ai";
 
 export default class Test extends Component {
   constructor() {
     super();
 
     this.state = {
-      comment: [
+      profiles: [
         {
-          creator: "Maz",
-          date: new Date(),
-          time: "22:43",
-          content:
-            "Подскажите на какой равнозначный по комфорту и остальным качествам можно поменять Toyota Chaser 90. Авто с левым рулём до 1.5 млн. Ничего не вижу кроме Audi A8 long d2, но сейчас это проблемная техника. Очень нуждаюсь в дельном совете.",
-          like: 57,
-          dislike: 7
+          title: "Avtoznatok",
+          email: "avtoznatok@mail.ru",
+          isBlocked: false,
         },
         {
-          creator: "Maz",
-          date: "2/02/2020",
-          time: "22:43",
-          content:
-            "Подскажите на какой равнозначный по комфорту и остальным качествам можно поменять Toyota Chaser 90. Авто с левым рулём до 1.5 млн. Ничего не вижу кроме Audi A8 long d2, но сейчас это проблемная техника. Очень нуждаюсь в дельном совете.",
+          title: "Автогарант",
+          email: "avtogarant@gmail.com",
+          isBlocked: false,
         },
         {
-          creator: "Maz",
-          date: "2/02/2020",
-          time: "22:43",
-          content:
-            "Подскажите на какой равнозначный по комфорту и остальным качествам можно поменять Toyota Chaser 90. Авто с левым рулём до 1.5 млн. Ничего не вижу кроме Audi A8 long d2, но сейчас это проблемная техника. Очень нуждаюсь в дельном совете.",
+          title: "Avtopodbor",
+          email: "avtopodbor@mail.ru",
+          isBlocked: true,
         },
       ],
     };
   }
 
   render() {
+    const now = 9;
     return (
       <>
-        <div className="container my-5">
-          <div className="mb-3">
-            <FaComment size="30px" className="pb-2 mr-2" />
-            <span className="h3">Комментарии</span>
-            {this.state.comment.length > 0 && (
-              <span className="h3 ml-2">({this.state.comment.length})</span>
-            )}
-          </div>
-          <div className="row">
-            <div className="col-1 pr-1">
-              <img src={avatar} height="50px" className="rounded-circle" />
-            </div>
-            <div className="col-8 px-0">
-              <div className="row">
-                <div className="col">
-                  <span className="h5 font-weight-bold">
-                    {this.state.comment[0].creator}
-                  </span>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col">
-                  {this.state.comment[0].date.toLocaleString("ru", {
-                    day: "numeric",
-                    month: "long",
-                    year: "numeric",
-                  })}{" "}
-                  {this.state.comment[0].date.toLocaleString("ru", {
-                    hour: "numeric",
-                    minute: "numeric",
-                  })}
-                </div>
-              </div>
-            </div>
-            <div className="col h5 py-2">
-              <span className="text-success"><AiOutlineLike />{this.state.comment[0].like}</span>
-              <span className="text-danger ml-5"><AiOutlineDislike />{this.state.comment[0].dislike}</span>
-            </div>
-          </div>
-          <div
-            className="border border-body-1 rounded my-3 p-3"
-            style={{ fontSize: "18px" }}
-          >
-            {this.state.comment[0].content}
-          </div>
+        <div className="container-fluid py-3 mb-4 border border-dark">
+          <h4>Панель управления</h4>
         </div>
-        {/* <div className="w-100 bg-light">
-          {this.state.comment[0].date.toLocaleString("ru", {
-            day: "numeric",
-            month: "long",
-            year: "numeric",
-          })}{" "}
-          {this.state.comment[0].date.toLocaleString("ru", {
-            hour: "numeric",
-            minute: "numeric",
-          })}
-        </div> */}
-        {/* <div>
-            <img src={avatar} height="30px" className="rounded" />
-            <span className="ml-3">Сергей</span>
-            <br />
-            <span className="ml-3">12/12/2020, 06:33</span>
+        <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+          <Row>
+            <Col sm={3}>
+              <Nav variant="pills" className="flex-column h5">
+                <Nav.Item>
+                  <Nav.Link eventKey="first">Профили</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="third">Заявки</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="second">Подписки</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="four">Обратная связь</Nav.Link>
+                </Nav.Item>
+              </Nav>
+            </Col>
+            <Col sm={9}>
+              <Tab.Content className="bg-light">
+                <Tab.Pane eventKey="third">Tab one</Tab.Pane>
+                <Tab.Pane eventKey="second">Подписки</Tab.Pane>
+                <Tab.Pane eventKey="first">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Название</th>
+                        <th>Email</th>
+                        {/* <th></th> */}
+                        {/* <th></th> */}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {this.state.profiles.map((profile) => (
+                        <tr>
+                          <td>{profile.title}</td>
+                          <td>{profile.email}</td>
+                          <td>
+                            <button className="btn btn-primary btn-sm">
+                              Открыть
+                            </button>
+                          </td>
+                          <td>
+                            <button className="btn btn-secondary btn-sm">
+                              {profile.isBlocked
+                                ? "Разблокировать"
+                                : "Заблокировать"}
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </Tab.Pane>
+                <Tab.Pane eventKey="four">Обратная связь</Tab.Pane>
+              </Tab.Content>
+            </Col>
+          </Row>
+        </Tab.Container>
+        {/* handleChangeText = (e) => {                           TEXTAREA
+    const characters = new String(e.target.value);
+    const needRows = this.state.rows + 1;
+    console.log(characters.length >= this.state.charsPerLine);
+    if (characters.length >= this.state.charsPerLine)
+      this.setState({ text: characters, rows: needRows});
+    else this.setState({ text: characters });
+  }; */}
+        {/* <textarea
+         
+         rows={this.state.rows}
+         cols={this.state.charsPerLine}
+         style={{ resize: "none", overflow: "hidden"}}
+         placeholder="Оставьте комментарий"
+         onChange={this.handleChangeText}
+       /> */}
+
+        {/* <div className="col h5 pt-2"         ЛАЙКИ>
+              <div className="row">
+                <span className="text-success col-6">
+                  <span
+                    className="p-2"
+                    style={{ cursor: "pointer" }}
+                    onClick={() => this.handleChangeEvaluation("like")}
+                  >
+                    {this.state.evaluation == "like" ? (
+                      <AiOutlineLike size="28px" />
+                    ) : (
+                      <AiOutlineLike />
+                    )}
+                  </span>
+                  {this.state.comment[0].like}
+                </span>
+                <span className="text-danger col">
+                  <span
+                    className="p-2"
+                    style={{ cursor: "pointer" }}
+                    onClick={() => this.handleChangeEvaluation("dislike")}
+                  >
+                    {this.state.evaluation == "dislike" ? (
+                      <AiOutlineDislike size="28px" />
+                    ) : (
+                      <AiOutlineDislike />
+                    )}
+                  </span>
+                  {this.state.comment[0].dislike}
+                </span>
+              </div>
+            </div>
           </div> */}
       </>
     );

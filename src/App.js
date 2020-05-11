@@ -13,12 +13,21 @@ import CreateProfile from "./CreateProfile";
 import Subscribe from "./Subscribe";
 import NewsBlock from "./NewsBlock";
 
+import avatar from "./images/avtoznatok.jpg";
+import Admin from "./Admin";
+
+// export const UserContext = React.createContext({
+//   user: null,
+//   photo: null
+// })
+
 export default class App extends Component {
   constructor(props) {
     super();
     this.state = {
       user: null,
       password: null,
+      // photo: avatar
     };
   }
 
@@ -32,7 +41,8 @@ export default class App extends Component {
 
   render() {
     return (
-      <Fragment>
+      <>
+        {/* // <UserContext.Provider value={this.state.user}> */}
         <Navigation
           user={this.state.user}
           logIn={this.logInUser}
@@ -41,14 +51,16 @@ export default class App extends Component {
 
         <Router>
           <Home path="/" />
-          <CreateProfile path="/profile/create"/>
-          <EditableProfile path="/profile/edit"/>
-          <Profile path="/profile"/>
-          <Test path="/test"/>
-          <Subscribe path="/subscribe"/>
-          <NewsBlock path="/news"/>
+          <CreateProfile path="/profile/create" />
+          <EditableProfile path="/profile/edit" />
+          <Profile path="/profile" />
+          <Test path="/test" />
+          <Subscribe path="/subscribe" />
+          <NewsBlock path="/news" />
+          <Admin path="/admin" />
         </Router>
-      </Fragment>
+        {/* // </UserContext.Provider> */}
+      </>
     );
   }
 }

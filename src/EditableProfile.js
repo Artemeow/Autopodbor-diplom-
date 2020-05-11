@@ -3,6 +3,8 @@ import FieldEditor from "./FieldEditor";
 import ProfileAvatar from "./ProfileAvatar";
 import ProfileRegion from "./ProfileRegion";
 import ProfileTariff from "./ProfileTariff";
+import NewsBlock from "./NewsBlock";
+import CreateProfileRegion from "./CreateProfileRegion";
 
 const fieldNames = {
   title: "Название",
@@ -96,8 +98,9 @@ export default class Profile extends Component {
             </div>
           </div>
         </div>
-        <ProfileRegion />
+        <CreateProfileRegion />
         <ProfileTariff />
+        <NewsBlock />
         <div className="d-flex justify-content-center my-5">
           <button className="btn btn-lg btn-success">Сохранить</button>
         </div>

@@ -5,6 +5,7 @@ import ProfileRegion from "./ProfileRegion";
 import ProfileTariff from "./ProfileTariff";
 import NewsBlock from "./NewsBlock";
 import Rating from "./Rating";
+import CommentBlock from "./CommentBlock";
 
 export default class Profile extends Component {
   constructor(props) {
@@ -68,6 +69,7 @@ export default class Profile extends Component {
         <ProfileTariff />
         <NewsBlock />
         <Rating />
+        <CommentBlock />
       </div>
     );
   }
