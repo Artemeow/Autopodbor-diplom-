@@ -3,10 +3,8 @@ package model;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -19,46 +17,48 @@ public class ProfileSubscribe {
 	@Id
 	@GeneratedValue
 	private long id;
-	@OneToOne(fetch = FetchType.EAGER)
+	@OneToOne
 	private Subscribe subscribe;
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dateBegin;
+	private Date createdAt;
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dateEnd;
-
-	public ProfileSubscribe() {
-	}
-
-	public long getId() {
-		return id;
-	}
-
+	private Date endedAt;
+	
 	public Subscribe getSubscribe() {
 		return subscribe;
-	}
-
-	public Date getDateBegin() {
-		return dateBegin;
-	}
-
-	public Date getDateEnd() {
-		return dateEnd;
-	}
-
-	public void setId(long id) {
-		this.id = id;
 	}
 
 	public void setSubscribe(Subscribe subscribe) {
 		this.subscribe = subscribe;
 	}
 
-	public void setDateBegin(Date dateBegin) {
-		this.dateBegin = dateBegin;
+	public Date getCreatedAt() {
+		return createdAt;
 	}
 
-	public void setDateEnd(Date dateEnd) {
-		this.dateEnd = dateEnd;
+	public Date getEndedAt() {
+		return endedAt;
+	}
+
+	public void setEndedAt(Date endedAt) {
+		this.endedAt = endedAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	@Override
+	public String toString() {
+		return "ProfileSubscribe [id=" + id + ", createdAt=" + createdAt + ", endedAt=" + endedAt + "]";
 	}
 
 }

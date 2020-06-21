@@ -14,10 +14,22 @@ public class Subscribe {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String duration;
+	private int days;
 	private int price;
 
 	public Subscribe() {
 	}
+
+	
+	public int getDays() {
+		return days;
+	}
+
+
+	public void setDays(int days) {
+		this.days = days;
+	}
+
 
 	public long getId() {
 		return id;
@@ -42,4 +54,10 @@ public class Subscribe {
 	public void setDuration(String duration) {
 		this.duration = duration;
 	}
+
+	@Override
+	public String toString() {
+		return "Subscribe [id=" + id + ", duration=" + duration + ", price=" + price + "]";
+	}
+	
 }

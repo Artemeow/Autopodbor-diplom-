@@ -16,29 +16,40 @@ public class Region {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	private String name;
-	@OneToMany(mappedBy="region", orphanRemoval = true, fetch = FetchType.LAZY)
+	private String value;
+	@OneToMany(orphanRemoval = true, fetch = FetchType.EAGER)
 	private List<City> cities;
-	
+
 	public long getId() {
 		return id;
 	}
-	public String getName() {
-		return name;
-	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
-	public void setName(String name) {
-		this.name = name;
-	}
+
 	public List<City> getCities() {
 		return cities;
 	}
+
 	public void setCities(List<City> cities) {
 		this.cities = cities;
 	}
-	public Region() {
-		super();
+
+	public String getValue() {
+		return value;
 	}
+
+	public void setValue(String value) {
+		this.value = value;
+	}
+
+	public Region() {
+	}
+
+	@Override
+	public String toString() {
+		return "Region [id=" + id + ", value=" + value + ", cities=" + cities + "]";
+	}
+
 }

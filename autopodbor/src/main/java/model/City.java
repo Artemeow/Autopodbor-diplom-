@@ -1,12 +1,9 @@
 package model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,35 +13,30 @@ public class City {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	private String name;
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private Region region;
+	private String value;
 
 	public long getId() {
 		return id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public Region getRegion() {
-		return region;
 	}
 
 	public void setId(long id) {
 		this.id = id;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public String getValue() {
+		return value;
 	}
 
-	public void setRegion(Region region) {
-		this.region = region;
+	public void setValue(String value) {
+		this.value = value;
 	}
 
 	public City() {
+	}
+
+	@Override
+	public String toString() {
+		return "City [id=" + id + ", name=" + value + "]";
 	}
 
 }

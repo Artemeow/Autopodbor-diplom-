@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "controller service")
+@ComponentScan(basePackages = "controller service authentication")
 public class WebMvcConfig {
 
 	@Bean
